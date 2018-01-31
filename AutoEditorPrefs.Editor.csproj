@@ -282,7 +282,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\AutoEditorPrefs\Editor\AutoEditorPrefsEditor.cs" />
+    <Compile Include="Assets\AutoEditorPrefs\Editor\AutoEditorPrefs.cs" />
     <Compile Include="Assets\AutoEditorPrefs\Editor\AutoEditorPrefsScriptableObject.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

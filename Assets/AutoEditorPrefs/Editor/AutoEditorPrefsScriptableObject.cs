@@ -8,7 +8,6 @@ public class AutoEditorPrefsScriptableObject : ScriptableObject
 	Dictionary<string, float> m_dictFloats = new Dictionary<string, float>();
 	Dictionary<string, string> m_dictStrings = new Dictionary<string, string>();
 
-
 	public void SetBool(string strKey, bool bValue)
 	{
 		if (!m_dictBools.ContainsKey(strKey))
