@@ -11,11 +11,13 @@ public static class AutoEditorPrefsEditor
 	{
 		if (m_cAutoEditorPrefsScriptableObject == null)
 		{
-			string[] astrAutoEditorPrefsScriptableObjectPaths = AssetDatabase.FindAssets("t:AutoEditorPrefsScriptableObject");
+			string[] astrAutoEditorPrefsScriptableObjectGuids = AssetDatabase.FindAssets("t:AutoEditorPrefsScriptableObject");
 
-			if (astrAutoEditorPrefsScriptableObjectPaths.Length > 0)
+			if (astrAutoEditorPrefsScriptableObjectGuids.Length > 0)
 			{
-				m_cAutoEditorPrefsScriptableObject = AssetDatabase.LoadAssetAtPath<AutoEditorPrefsScriptableObject>(astrAutoEditorPrefsScriptableObjectPaths[0]);
+				string strAutoEditorPrefsScriptableObjectPath = AssetDatabase.GUIDToAssetPath(astrAutoEditorPrefsScriptableObjectGuids[0]);
+
+				m_cAutoEditorPrefsScriptableObject = AssetDatabase.LoadAssetAtPath<AutoEditorPrefsScriptableObject>(strAutoEditorPrefsScriptableObjectPath);
 			}
 			else
 			{
