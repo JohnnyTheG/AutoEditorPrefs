@@ -1,4 +1,5 @@
 Library/
 Temp/
 .vs/
-Assets/AutoAssetBundles/AssetBundles
+Assets/AutoEditorPrefs/Settings
+Assets/AutoEditorPrefs/Settings.meta
