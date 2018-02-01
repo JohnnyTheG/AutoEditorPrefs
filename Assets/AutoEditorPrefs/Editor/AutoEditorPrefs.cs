@@ -31,9 +31,16 @@ public static class AutoEditorPrefs
 		}
 	}
 
+	static void SaveAutoEditorPrefsScriptableObject()
+	{
+		EditorUtility.SetDirty(m_cAutoEditorPrefsScriptableObject);
+		AssetDatabase.SaveAssets();
+	}
+
 	public static void SetBool(string strKey, bool bValue)
 	{
 		m_cAutoEditorPrefsScriptableObject.SetBool(strKey, bValue);
+		SaveAutoEditorPrefsScriptableObject();
 	}
 
 	public static bool GetBool(string strKey)
@@ -44,11 +51,13 @@ public static class AutoEditorPrefs
 	public static void DeleteBool(string strKey)
 	{
 		m_cAutoEditorPrefsScriptableObject.DeleteBool(strKey);
+		SaveAutoEditorPrefsScriptableObject();
 	}
 
 	public static void SetInt(string strKey, int nValue)
 	{
 		m_cAutoEditorPrefsScriptableObject.SetInt(strKey, nValue);
+		SaveAutoEditorPrefsScriptableObject();
 	}
 
 	public static int GetInt(string strKey)
@@ -59,11 +68,13 @@ public static class AutoEditorPrefs
 	public static void DeleteInt(string strKey)
 	{
 		m_cAutoEditorPrefsScriptableObject.DeleteInt(strKey);
+		SaveAutoEditorPrefsScriptableObject();
 	}
 
 	public static void SetFloat(string strKey, float fValue)
 	{
 		m_cAutoEditorPrefsScriptableObject.SetFloat(strKey, fValue);
+		SaveAutoEditorPrefsScriptableObject();
 	}
 
 	public static float GetFloat(string strKey)
@@ -74,11 +85,13 @@ public static class AutoEditorPrefs
 	public static void DeleteFloat(string strKey)
 	{
 		m_cAutoEditorPrefsScriptableObject.DeleteFloat(strKey);
+		SaveAutoEditorPrefsScriptableObject();
 	}
 
 	public static void SetString(string strKey, string strValue)
 	{
 		m_cAutoEditorPrefsScriptableObject.SetString(strKey, strValue);
+		SaveAutoEditorPrefsScriptableObject();
 	}
 
 	public static string GetString(string strKey)
@@ -89,5 +102,6 @@ public static class AutoEditorPrefs
 	public static void DeleteString(string strKey)
 	{
 		m_cAutoEditorPrefsScriptableObject.DeleteString(strKey);
+		SaveAutoEditorPrefsScriptableObject();
 	}
 }

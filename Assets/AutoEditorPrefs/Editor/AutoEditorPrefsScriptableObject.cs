@@ -3,28 +3,43 @@ using System.Collections.Generic;
 
 public class AutoEditorPrefsScriptableObject : ScriptableObject
 {
-	Dictionary<string, bool> m_dictBools = new Dictionary<string, bool>();
-	Dictionary<string, int> m_dictInts = new Dictionary<string, int>();
-	Dictionary<string, float> m_dictFloats = new Dictionary<string, float>();
-	Dictionary<string, string> m_dictStrings = new Dictionary<string, string>();
+	[SerializeField]
+	List<string> m_lstBoolKeys = new List<string>();
+	[SerializeField]
+	List<bool> m_lstBoolValues = new List<bool>();
+
+	[SerializeField]
+	List<string> m_lstIntKeys = new List<string>();
+	[SerializeField]
+	List<int> m_lstIntValues = new List<int>();
+
+	[SerializeField]
+	List<string> m_lstFloatKeys = new List<string>();
+	[SerializeField]
+	List<float> m_lstFloatValues = new List<float>();
+
+	[SerializeField]
+	List<string> m_lstStringKeys = new List<string>();
+	[SerializeField]
+	List<string> m_lstStringValues = new List<string>();
 
 	public void SetBool(string strKey, bool bValue)
 	{
-		if (!m_dictBools.ContainsKey(strKey))
+		if (!m_lstBoolKeys.Contains(strKey))
 		{
-			m_dictBools.Add(strKey, bValue);
+			m_lstBoolKeys.Add(strKey);
 		}
-		else
-		{
-			m_dictBools[strKey] = bValue;
-		}
+
+		m_lstBoolValues.Add(bValue);
 	}
 
 	public bool GetBool(string strKey)
 	{
-		if (m_dictBools.ContainsKey(strKey))
+		if (m_lstBoolKeys.Contains(strKey))
 		{
-			return m_dictBools[strKey];
+			int nIndex = m_lstBoolKeys.IndexOf(strKey);
+
+			return m_lstBoolValues[nIndex];
 		}
 
 		return false;
@@ -32,29 +47,32 @@ public class AutoEditorPrefsScriptableObject : ScriptableObject
 
 	public void DeleteBool(string strKey)
 	{
-		if (m_dictBools.ContainsKey(strKey))
+		if (m_lstBoolKeys.Contains(strKey))
 		{
-			m_dictBools.Remove(strKey);
+			int nIndex = m_lstBoolKeys.IndexOf(strKey);
+
+			m_lstBoolKeys.RemoveAt(nIndex);
+			m_lstBoolValues.RemoveAt(nIndex);
 		}
 	}
 
 	public void SetInt(string strKey, int nValue)
 	{
-		if (!m_dictInts.ContainsKey(strKey))
+		if (!m_lstIntKeys.Contains(strKey))
 		{
-			m_dictInts.Add(strKey, nValue);
+			m_lstIntKeys.Add(strKey);
 		}
-		else
-		{
-			m_dictInts[strKey] = nValue;
-		}
+
+		m_lstIntValues.Add(nValue);
 	}
 
 	public int GetInt(string strKey)
 	{
-		if (m_dictInts.ContainsKey(strKey))
+		if (m_lstIntKeys.Contains(strKey))
 		{
-			return m_dictInts[strKey];
+			int nIndex = m_lstIntKeys.IndexOf(strKey);
+
+			return m_lstIntValues[nIndex];
 		}
 
 		return 0;
@@ -62,29 +80,32 @@ public class AutoEditorPrefsScriptableObject : ScriptableObject
 
 	public void DeleteInt(string strKey)
 	{
-		if (m_dictInts.ContainsKey(strKey))
+		if (m_lstIntKeys.Contains(strKey))
 		{
-			m_dictInts.Remove(strKey);
+			int nIndex = m_lstIntKeys.IndexOf(strKey);
+
+			m_lstIntKeys.RemoveAt(nIndex);
+			m_lstIntValues.RemoveAt(nIndex);
 		}
 	}
 
 	public void SetFloat(string strKey, float fValue)
 	{
-		if (!m_dictFloats.ContainsKey(strKey))
+		if (!m_lstFloatKeys.Contains(strKey))
 		{
-			m_dictFloats.Add(strKey, fValue);
+			m_lstFloatKeys.Add(strKey);
 		}
-		else
-		{
-			m_dictFloats[strKey] = fValue;
-		}
+
+		m_lstFloatValues.Add(fValue);
 	}
 
 	public float GetFloat(string strKey)
 	{
-		if (m_dictFloats.ContainsKey(strKey))
+		if (m_lstFloatKeys.Contains(strKey))
 		{
-			return m_dictFloats[strKey];
+			int nIndex = m_lstFloatKeys.IndexOf(strKey);
+
+			return m_lstFloatValues[nIndex];
 		}
 
 		return 0.0f;
@@ -92,29 +113,32 @@ public class AutoEditorPrefsScriptableObject : ScriptableObject
 
 	public void DeleteFloat(string strKey)
 	{
-		if (m_dictFloats.ContainsKey(strKey))
+		if (m_lstFloatKeys.Contains(strKey))
 		{
-			m_dictFloats.Remove(strKey);
+			int nIndex = m_lstFloatKeys.IndexOf(strKey);
+
+			m_lstFloatKeys.RemoveAt(nIndex);
+			m_lstFloatValues.RemoveAt(nIndex);
 		}
 	}
 
 	public void SetString(string strKey, string strValue)
 	{
-		if (!m_dictStrings.ContainsKey(strKey))
+		if (!m_lstStringKeys.Contains(strKey))
 		{
-			m_dictStrings.Add(strKey, strValue);
+			m_lstStringKeys.Add(strKey);
 		}
-		else
-		{
-			m_dictStrings[strKey] = strValue;
-		}
+
+		m_lstStringValues.Add(strValue);
 	}
 
 	public string GetString(string strKey)
 	{
-		if (m_dictStrings.ContainsKey(strKey))
+		if (m_lstStringKeys.Contains(strKey))
 		{
-			return m_dictStrings[strKey];
+			int nIndex = m_lstStringKeys.IndexOf(strKey);
+
+			return m_lstStringValues[nIndex];
 		}
 
 		return string.Empty;
@@ -122,9 +146,12 @@ public class AutoEditorPrefsScriptableObject : ScriptableObject
 
 	public void DeleteString(string strKey)
 	{
-		if (m_dictStrings.ContainsKey(strKey))
+		if (m_lstStringKeys.Contains(strKey))
 		{
-			m_dictStrings.Remove(strKey);
+			int nIndex = m_lstStringKeys.IndexOf(strKey);
+
+			m_lstStringKeys.RemoveAt(nIndex);
+			m_lstStringValues.RemoveAt(nIndex);
 		}
 	}
 }
