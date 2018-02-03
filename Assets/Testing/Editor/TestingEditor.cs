@@ -12,6 +12,8 @@ public class TestingEditorWindow : Editor
 		AutoEditorPrefs.SetInt("test", 1);
 		AutoEditorPrefs.SetFloat("test", 1.0f);
 		AutoEditorPrefs.SetString("test", "test string");
+
+		AutoEditorPrefs.Save();
 	}
 
 	[MenuItem("Tools/AutoEditorPrefs/GetTestData")]
