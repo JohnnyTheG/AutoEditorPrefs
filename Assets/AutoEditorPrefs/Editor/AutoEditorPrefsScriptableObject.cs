@@ -28,9 +28,13 @@ public class AutoEditorPrefsScriptableObject : ScriptableObject
 		if (!m_lstBoolKeys.Contains(strKey))
 		{
 			m_lstBoolKeys.Add(strKey);
+			m_lstBoolValues.Add(bValue);
 		}
-
-		m_lstBoolValues.Add(bValue);
+		else
+		{
+			int nIndex = m_lstBoolKeys.IndexOf(strKey);
+			m_lstBoolValues[nIndex] = bValue;
+		}
 	}
 
 	public bool GetBool(string strKey)
@@ -61,9 +65,13 @@ public class AutoEditorPrefsScriptableObject : ScriptableObject
 		if (!m_lstIntKeys.Contains(strKey))
 		{
 			m_lstIntKeys.Add(strKey);
+			m_lstIntValues.Add(nValue);
 		}
-
-		m_lstIntValues.Add(nValue);
+		else
+		{
+			int nIndex = m_lstIntKeys.IndexOf(strKey);
+			m_lstIntValues[nIndex] = nValue;
+		}
 	}
 
 	public int GetInt(string strKey)
@@ -94,9 +102,13 @@ public class AutoEditorPrefsScriptableObject : ScriptableObject
 		if (!m_lstFloatKeys.Contains(strKey))
 		{
 			m_lstFloatKeys.Add(strKey);
+			m_lstFloatValues.Add(fValue);
 		}
-
-		m_lstFloatValues.Add(fValue);
+		else
+		{
+			int nIndex = m_lstFloatKeys.IndexOf(strKey);
+			m_lstFloatValues[nIndex] = fValue;
+		}
 	}
 
 	public float GetFloat(string strKey)
@@ -127,9 +139,13 @@ public class AutoEditorPrefsScriptableObject : ScriptableObject
 		if (!m_lstStringKeys.Contains(strKey))
 		{
 			m_lstStringKeys.Add(strKey);
+			m_lstStringValues.Add(strValue);
 		}
-
-		m_lstStringValues.Add(strValue);
+		else
+		{
+			int nIndex = m_lstStringKeys.IndexOf(strKey);
+			m_lstStringValues[nIndex] = strValue;
+		}
 	}
 
 	public string GetString(string strKey)
